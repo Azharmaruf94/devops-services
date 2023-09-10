@@ -28,27 +28,7 @@ app.post("/add-sub", (req, res) => {
   console.log(`A: ${a}, B: ${b}`);
 
   //////////////////////////////////////
-  const express = require("express");
-const axios = require("axios");
-
-const app = express();
-
-app.get("/sum", async (req, res) => {
-  const { a, b } = req.query;
-  const response = await axios.get(`http://service1:3001/sum?a=${a}&b=${b}`);
-  res.json(response.data);
-});
-
-app.get("/difference", async (req, res) => {
-  const { a, b } = req.query;
-  const response = await axios.get(`http://service2:3002/difference?a=${a}&b=${b}`);
-  res.json(response.data);
-});
-
-app.listen(3003, () => {
-  console.log("Service 3 listening on port 3003");
-});
-
+   // Your logic to call S1 and S2 services to get the addition and subtraction
   //////////////////////////////////////
 
 });
