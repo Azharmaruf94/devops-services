@@ -28,7 +28,30 @@ app.post("/add-sub", (req, res) => {
   console.log(`A: ${a}, B: ${b}`);
 
   //////////////////////////////////////
-  // Your logic to call S1 and S2 services to get the addition and subtraction
+  const express = require('express');
+const axios = require('axios');
+const app = express();
+const port = 3003;
+
+app.get('/calculate', async (req, res) => {
+  const a = 10; // Replace with your logic to get 'a' from the request.
+  const b = 5;  // Replace with your logic to get 'b' from the request.
+
+  try {
+    const sumResponse = await axios.get('http://s1:3001/sum', { params: { a, b } });
+    const diffResponse = await axios.get('http://s2:3002/difference', { params: { a, b } });
+
+    res.json({ sum: sumResponse.data, difference: diffResponse.data });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.listen(port, () => {
+  console.log(`S3 service is listening at http://localhost:${port}`);
+});
+
   //////////////////////////////////////
 
 });
