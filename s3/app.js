@@ -27,7 +27,6 @@ app.post("/add-sub", (req, res) => {
   const {a=0, b=0} = req.body;
   console.log(`A: ${a}, B: ${b}`);
 
-  //////////////////////////////////////
   const express = require('express');
 const axios = require('axios');
 const app = express();
@@ -52,7 +51,6 @@ app.listen(port, () => {
   console.log(`S3 service is listening at http://localhost:${port}`);
 });
 
-  //////////////////////////////////////
 
 });
 
